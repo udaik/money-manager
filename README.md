@@ -1,2 +1,0 @@
-# money-manager
-Money Manager
