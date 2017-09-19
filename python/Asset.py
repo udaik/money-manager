@@ -1,5 +1,6 @@
 from pymongo.write_concern import WriteConcern
 from pymodm import EmbeddedMongoModel, MongoModel, fields
+from pymodm.errors import ValidationError, ConfigurationError
 
 from BankAccount import BankAccount
 from CreditCard import CreditCard
@@ -23,7 +24,11 @@ class Asset(MongoModel):
         collection_name = "Assets"
 
     def clean(self):
-        if (self.acntType == "BANK" and not self.bankAccount):
+        """if (self.acntType == "BANK" and not self.bankAccount):
             raise ValidationError('Bank Account data not set')
-        else if(self.acntType == "CREDIT_CARD" and not self.creditCard):
-            raise ValidationError('Bank Account data not set')
+        elif(self.acntType == "CREDIT_CARD" and not self.creditCard):
+            raise ValidationError('Credit Card data not set')
+        elif(self.acntType == "MUTUAL_FUND" and not self.mutualFund):
+            raise ValidationError('Mutual Fund not set')
+        elif(self.acntType == "WALLET" and not self.wallet):
+            raise ValidationError('Mutual Fund not set')"""
