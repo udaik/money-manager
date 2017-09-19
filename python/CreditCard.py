@@ -1,18 +1,13 @@
-from pymongo.write_concern import WriteConcern
-from pymodm import EmbeddedMongoModel, MongoModel, fields
+from pymodm import EmbeddedMongoModel, fields
 
-class CreditCard(MongoModel):
-    name = fields.CharField(primary_key = True)
+class CreditCard(EmbeddedMongoModel):
     cardName = fields.CharField()
+    cardNumber = fields.IntegerField()
     cardType = fields.CharField()
     totalLiability = fields.CharField()
     creditLimit = fields.FloatField()
     cashLimit = fields.FloatField()
     availableCredit = fields.FloatField()
     loyaltyPoints = fields.FloatField()
-    minimumPaymentDue = fields.FloatField9)
+    minimumPaymentDue = fields.FloatField()
     dueDate = fields.DateTimeField()
-
-    class Meta:
-        write_concern = WriteConcern(j=True)
-        connection_alias = 'my-app'

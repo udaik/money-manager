@@ -1,12 +1,8 @@
 from pymodm import connect
+from Asset import Asset
 from BankAccount import BankAccount
-from MutualFund import MutualFund
-from CreditCard import CreditCard
-from Insurance import Insurance
-from EPF import EmployeeProvidentFund
 
+connect("mongodb://localhost:27017/pymod-test", alias="MoneyManager")
 
-connect("mongodb://localhost:27017/mydb", alias="my-app")
-
-BankAccount("SBI Joint", "Savings", 100.0, 200.0, "descr").save()
-# b = BankAccount("SBI Joint")
+asset = Asset("Test-Asset1", "BANK")
+asset.save()
