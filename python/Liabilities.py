@@ -7,21 +7,21 @@ from CreditCard import CreditCard
 from MutualFund import MutualFund
 from Wallet import Wallet
 
-ASSET_TYPES = ("BANK", "CREDIT_CARD", "MUTUAL_FUND", "SMALL_SAVING", "WALLET", "INSURANCE")
+LIABILITY_TYPES = ("CREDIT_CARD", "LOAN")
 
-class Asset(MongoModel):
+class Liability(MongoModel):
     name = fields.CharField(primary_key = True)
-    acntType = fields.CharField(choices = ASSET_TYPES)
-    bankAccount = fields.EmbeddedDocumentField(BankAccount)
-    creditCard = fields.EmbeddedDocumentField(CreditCard)
-    mutualFund = fields.EmbeddedDocumentField(MutualFund)
-    wallet = fields.EmbeddedDocumentField(Wallet)
+    acntType = fields.CharField(choices = LIABILITY_TYPES)
+    # bankAccount = fields.EmbeddedDocumentField(BankAccount)
+    # creditCard = fields.EmbeddedDocumentField(CreditCard)
+    # mutualFund = fields.EmbeddedDocumentField(MutualFund)
+    # wallet = fields.EmbeddedDocumentField(Wallet)
     collection_name = "Assets"
 
     class Meta:
         write_concern = WriteConcern(j=True)
         connection_alias = 'Money-Manager'
-        collection_name = "Accounts"
+        collection_name = "Liabilities"
 
     def clean(self):
         """if (self.acntType == "BANK" and not self.bankAccount):

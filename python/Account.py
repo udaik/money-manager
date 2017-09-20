@@ -7,16 +7,23 @@ from CreditCard import CreditCard
 from MutualFund import MutualFund
 from Wallet import Wallet
 
-ASSET_TYPES = ("BANK", "CREDIT_CARD", "MUTUAL_FUND", "SMALL_SAVING", "WALLET", "INSURANCE")
+ACCOUNT_TYPES = ("ASSET", "LIABILITY", "EQUITY", "INCOME", "EXPENSE")
+INCOME_TYPES = ("SALARY", "INCOME")
+ASSET_TYPES = ("BANK", "MUTUAL_FUND", "SMALL_SAVING", "WALLET", "INSURANCE")
+LIABILITY_TYPES = ("CREDIT_CARD", "LOAN")
 
-class Asset(MongoModel):
+class Account(MongoModel):
     name = fields.CharField(primary_key = True)
-    acntType = fields.CharField(choices = ASSET_TYPES)
+    balance = fields.FloatField()
+    
+    acntType = fields.CharField(choices = ACCOUNT_TYPES)
+    incomeType = fields.CharField(choices = INCOME_TYPES)
+    assetType = fields.CharField(choices = ASSET_TYPES)
+    liabilityType = fields.CharField(choices = LIABILITY_TYPES)
     bankAccount = fields.EmbeddedDocumentField(BankAccount)
     creditCard = fields.EmbeddedDocumentField(CreditCard)
     mutualFund = fields.EmbeddedDocumentField(MutualFund)
     wallet = fields.EmbeddedDocumentField(Wallet)
-    collection_name = "Assets"
 
     class Meta:
         write_concern = WriteConcern(j=True)

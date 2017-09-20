@@ -1,13 +1,17 @@
-from pymodm import EmbeddedMongoModel, fields
+from pymodm import fields
+from BaseAccount import BaseAccount
+import config as CONFIG
 
-class CreditCard(EmbeddedMongoModel):
-    cardName = fields.CharField()
-    cardNumber = fields.IntegerField()
+class CreditCard(BaseAccount):
+    cardNumber = fields.CharField()
     cardType = fields.CharField()
-    totalLiability = fields.CharField()
     creditLimit = fields.FloatField()
-    cashLimit = fields.FloatField()
-    availableCredit = fields.FloatField()
-    loyaltyPoints = fields.FloatField()
-    minimumPaymentDue = fields.FloatField()
-    dueDate = fields.DateTimeField()
+    availCreditLimit = fields.FloatField()
+    availCashLimit = fields.FloatField()
+    lastBilledDate = fields.DateTimeField()
+    minAmountDue = fields.FloatField()
+    lastBilledAmount = fields.FloatField()
+    unbilledPurchases = fields.FloatField()
+    unbilledPayments = fields.FloatField()
+    outstandingTotal = fields.FloatField()
+    paymentDueDate = fields.FloatField()

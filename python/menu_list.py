@@ -1,35 +1,30 @@
-import config as CONFIG
 import sys
 import readchar
 
+import config as CONFIG
+
 class menu_list:
     def __init__(self):
-        self._idx = 0
         self._menu_list = {}
 
     def addItem(self, item):
-        self._menu_list[self._idx] = item
-        self._idx += 1
+        self._menu_list[item.key()] = item
 
     def show_seperator(self):
         print(CONFIG.SEPERATOR)
 
     def show(self):
-        idx = 0
         for m in self._menu_list:
-            print(self._menu_list[idx].text(), "[", idx , "]")
-            idx += 1
+            print("[", m , "]", self._menu_list[m].text())
 
     def exec_menu_item(self):
-        # c = readchar.readchar()
         print(CONFIG.INPUT_PROMPT, end=' ')
         key = readchar.readkey()
 
-        if int(key) > len(self._menu_list):
-            print("Invalid choice", key)
+        if not str.isalpha(key):
             return
 
-        item = self._menu_list[int(key)].action()
+        item = self._menu_list[key].action()
         return item()
 
     def drive_menu(self):
