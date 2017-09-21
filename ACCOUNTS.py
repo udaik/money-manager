@@ -1,3 +1,0 @@
-SAVINGS = 0
-LOAN = 1
-INSURANCE = 2
