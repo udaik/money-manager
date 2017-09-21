@@ -1,5 +1,3 @@
-import sys
-import os
 from termcolor import colored
 from pymodm import connect
 from datetime import datetime

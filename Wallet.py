@@ -1,5 +1,4 @@
 from pymodm import EmbeddedMongoModel, fields
 
-class Wallet(EmbeddedMongoModel):
-    balance = fields.FloatField()
-    accountNumber = fields.CharField()
+class Wallet(BaseAccount):
+    rateOfInterest = fields.FloatField()

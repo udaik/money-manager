@@ -8,6 +8,7 @@ class BankAccount(BaseAccount):
     accountNumber = fields.CharField()
     interestRate = fields.FloatField()
     mab = fields.FloatField()
+    holdersName = fields.CharField()
 
     def deposit(self, amount):
         balance += amount
