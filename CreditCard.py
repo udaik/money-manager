@@ -14,6 +14,7 @@ class CreditCard(BaseAccount):
     unbilledPayments = fields.FloatField()
     outstandingTotal = fields.FloatField()
     paymentDueDate = fields.FloatField()
+    holdersName = fields.CharField()
 
     def populate(self):
         print("Adding Banking Account")

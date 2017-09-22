@@ -34,3 +34,4 @@ if __name__ == '__main__' :
                     description='test', bankName='sbi',
                     ifscCode='12312', accountNumber='12312',
                     interestRate='8.65').save()
+    print(b.name)
